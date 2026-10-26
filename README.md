@@ -1,18 +1,18 @@
 # SPI Master Controller
 
-A parameterized SPI master controller implemented in Verilog and verified using a self-checking SystemVerilog testbench in AMD Vivado.
+A parameterized SPI master designed in Verilog, verified using SystemVerilog, and implemented in AMD Vivado.
 
 ## Features
-- Supports all four SPI modes (CPOL/CPHA: 00, 01, 10, 11)
+- Supports all four SPI modes (CPOL/CPHA)
 - Serial data transmission and reception
 - Configurable clock divider
-- Ready and receive-data-valid status signals
-- Reset and mid-transfer reset recovery
+- TX-ready and RX-data-valid status signals
+- Synchronous reset recovery, including mid-transfer reset testing
 
 ## Verification
-The self-checking testbench exercises all four SPI modes using multiple TX/RX data patterns and checks clock polarity, transmitted and received data, status signals, and reset recovery.
+A self-checking SystemVerilog testbench verifies SPI transfers across all four modes using multiple data patterns, alongside status-signal and reset checks.
 
-- **Checks passed:** 456/456
+- **Testbench checks passed:** 456/456
 - **Failed checks:** 0
 
 ## FPGA Implementation
@@ -26,16 +26,24 @@ The self-checking testbench exercises all four SPI modes using multiple TX/RX da
 | Worst Hold Slack (WHS) | +0.201 ns |
 | Total Negative Slack (TNS) | 0 ns |
 
-Timing results depend on the constraints used for implementation.
+*Timing results depend on the applied timing constraints.*
 
 ## Tools
 - Verilog HDL
 - SystemVerilog
 - AMD Vivado
+- Static Timing Analysis (STA)
 
-## Project Structure
-- `SPI_master.v` — SPI master RTL
-- `SPI_Master_TB.sv` — self-checking simulation testbench
+## Repository Structure
 
-## Scope
-This project demonstrates RTL design, simulation-based verification, FPGA implementation, and introductory static timing analysis.
+```text
+spi-master-controller/
+├── README.md
+├── rtl/
+│   └── SPI_master.v
+└── testbench/
+    └── SPI_Master_TB.sv
+```
+
+## Skills Demonstrated
+RTL design, SPI protocol implementation, self-checking verification, FPGA implementation, resource utilization analysis, and introductory static timing analysis.
